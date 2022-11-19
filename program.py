@@ -1,5 +1,5 @@
-# Weather Fetcher using Python and weather API
-# YT tutorial Video: https://www.youtube.com/watch?v=Oz3W-LKfafE&ab_channel=TechWithTim
+# John Ric Merque | BSCOE 2-6 | Weather Fetcher using Python and weather API
+# This program is referenced to YT tutorial Video: https://www.youtube.com/watch?v=Oz3W-LKfafE&ab_channel=TechWithTim. I made some slight modifications to improve the program.
 
 # Pseudocode
 # get weather data from API
@@ -22,11 +22,18 @@ response = requests.get(request_url)
 if response.status_code == 200: # if successful transform API into JSON format 
     data = response.json()
 
-    # accessing keys and printing them
+    # accessing keys
     weather = data['weather'][0]["description"]
-    temperature = round(data['main']['temp'] - 273.15) 
+    temperature = round(data['main']['temp'] - 273.15)
+    feels_like = round(data['main']['feels_like'] - 273.15)
+    wind_speed = data['wind']['speed']
+
+    # display 
     print(f"{city_name} is having {weather}.")
     print(f"Current temperature in the city is {temperature}°C.")
+    print(f"But it would feel like {feels_like} °C.")
+    print(f"The current wind speed in the area is {wind_speed} m/s.")
+    print(f"That's all, Stay Safe!")
 
 else:
     print("An error occured! Please try again")
