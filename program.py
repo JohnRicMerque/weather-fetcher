@@ -12,8 +12,9 @@ API_KEY = "4d7436b2e953a39a0d36c842e7742e02"
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 while True: 
-    # asks user input of city to integrate into the URL with API 
-    city_name = input("What city do you want to look into?: ")
+    # asks user input of city to integrate into the URL with API
+    print("\nWEATHER FETCHER") 
+    city_name = input("\nWhich city do you want to look into?: ")
     request_url = f"{BASE_URL}?appid={API_KEY}&q={city_name}"
 
     # request module method to get request url
@@ -29,16 +30,20 @@ while True:
         feels_like = round(data['main']['feels_like'] - 273.15)
         wind_speed = data['wind']['speed']
 
-        # display 
+        # display
+        print("=============================================================")
+        print("We found your city!\n") 
         print(f"{city_name.title()} is having {weather}.")
         print(f"The current temperature in the city is {temperature}°C.")
         print(f"But it would feel like {feels_like}°C.")
         print(f"While the current wind speed in the area is {wind_speed}m/s.")
-        print(f"That's all, Stay Safe!")
+        print(f"\nThat's all, Stay Safe!")
+        print("=============================================================") 
 
     else:
         print("An error occured! Please try again")
     
+    # exit loop
     exitProgram = input('Do you wish to check the weather on another city? (y/n): ')
     if exitProgram.lower() == 'y':
         continue
@@ -46,7 +51,7 @@ while True:
         print("Thank you for trusting us! Bye")
         break
     else:
-        print("Thank you for trusting us, Bye!")
+        print("\nThank you for trusting us, Bye!")
         break
 
 
