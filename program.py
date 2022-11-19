@@ -23,17 +23,18 @@ while True:
     # check if response is successful
     if response.status_code == 200: # if successful transform API into JSON format 
         data = response.json()
-
+        
         # accessing keys
         weather = data['weather'][0]["description"]
         temperature = round(data['main']['temp'] - 273.15)
         feels_like = round(data['main']['feels_like'] - 273.15)
         wind_speed = data['wind']['speed']
+        country = data['sys']['country']
 
         # display
         print("=============================================================")
         print("We found your city!\n") 
-        print(f"{city_name.title()} is having {weather}.")
+        print(f"{city_name.title()}, {country}: is having {weather}.")
         print(f"The current temperature in the city is {temperature}°C.")
         print(f"But it would feel like {feels_like}°C.")
         print(f"While the current wind speed in the area is {wind_speed}m/s.")
