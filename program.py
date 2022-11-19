@@ -19,7 +19,8 @@ request_url = f"{BASE_URL}?appid={API_KEY}&q={city_name}"
 response = requests.get(request_url)
 
 # check if response is successful
-if response.status_code == 200:
-    print("sucessful")
+if response.status_code == 200: # if successful transform API into JSON format 
+    data = response.json()
+    print(data)
 else:
-    print("An error occured")
+    print("An error occured! Please try again later")
