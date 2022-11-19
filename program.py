@@ -21,6 +21,15 @@ response = requests.get(request_url)
 # check if response is successful
 if response.status_code == 200: # if successful transform API into JSON format 
     data = response.json()
-    print(data)
+
+    # accessing keys and printing them
+    weather = data['weather']
+    print(weather)
+
+    temperature = data['main']['temp']
+    print(temperature)
+
 else:
     print("An error occured! Please try again later")
+
+
