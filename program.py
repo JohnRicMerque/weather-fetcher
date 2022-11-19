@@ -23,13 +23,13 @@ if response.status_code == 200: # if successful transform API into JSON format
     data = response.json()
 
     # accessing keys and printing them
-    weather = data['weather']
+    weather = data['weather'][0]["description"]
     print(weather)
 
-    temperature = data['main']['temp']
+    temperature = data['main']['temp'] - 273.15 
     print(temperature)
 
 else:
-    print("An error occured! Please try again later")
+    print("An error occured! Please try again")
 
 
