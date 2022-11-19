@@ -24,10 +24,9 @@ if response.status_code == 200: # if successful transform API into JSON format
 
     # accessing keys and printing them
     weather = data['weather'][0]["description"]
-    print(weather)
-
-    temperature = data['main']['temp'] - 273.15 
-    print(temperature)
+    temperature = round(data['main']['temp'] - 273.15) 
+    print(f"{city_name} is having {weather}.")
+    print(f"Current temperature in the city is {temperature}°C.")
 
 else:
     print("An error occured! Please try again")
